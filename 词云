@@ -1,0 +1,25 @@
+#wordcloud
+import wordcloud
+def getText():
+    txt = open("hamlet.txt","r").read()
+    txt = txt.lower()
+    for ch in '!"#$%&()*+,-./:;<=>?@[\\]^_{|}~':
+        txt = txt.replace(ch," ")
+    return txt
+hamletTxt = getText()
+words = hamletTxt.split()
+w = wordcloud.WordCloud(background_color="write")
+w = wordcloud.WordCloud(font_path="MSYH.TTF")
+w.generate(hamletTxt)
+w.to_file("helmatwcloud.png")
+
+
+
+#wordcloud2
+import wordcloud
+import jieba
+txt = open("threekingdoms.txt","r",encoding="utf-8").read()
+w = wordcloud.WordCloud(width=1000,height=700)
+w = wordcloud.WordCloud(font_path="MSYH.TTF")
+w.generate(" ".join(jieba.lcut(txt)))
+w.to_file("Threekdwcloud.png")
